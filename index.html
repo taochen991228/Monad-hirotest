@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="zh">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>小陶工作室monad计划</title>
+    <title>小桃工作室</title>
     <style>
         body {
             background-color: #b3e0ff;
@@ -17,7 +16,6 @@
             text-align: center;
             padding: 10px;
         }
-
         .container {
             display: flex;
             flex-wrap: wrap;
@@ -30,7 +28,6 @@
             margin-bottom: 20px;
             box-sizing: border-box;
         }
-
         .tag {
             width: 180px;
             height: 50px;
@@ -45,11 +42,9 @@
             display: flex;
             align-items: center;
         }
-
         .tag:hover {
             background-color: #ff9933;
         }
-
         .big-tag {
             width: 100%;
             max-width: 350px;
@@ -63,11 +58,9 @@
             cursor: pointer;
             transition: background-color 0.3s;
         }
-
         .big-tag:hover {
             background-color: #ff9933;
         }
-
         .bottom-tag {
             width: 100%;
             max-width: 250px;
@@ -81,11 +74,9 @@
             transition: background-color 0.3s;
             margin-top: 20px;
         }
-
         .bottom-tag:hover {
             background-color: #ff9933;
         }
-
         .checkbox {
             width: 20px;
             height: 20px;
@@ -97,27 +88,22 @@
             cursor: pointer;
             transition: background-color 0.3s;
         }
-
         .checkbox.checked {
             background-color: green;
         }
-
         .checkbox.checked::after {
             content: "✔";
             color: white;
             font-size: 16px;
         }
-
         .counter {
             font-size: 14px;
             margin-left: 5px;
         }
-
         .number {
             width: 30px;
             font-weight: bold;
         }
-
         .remark-container {
             width: 100%;
             max-width: 700px;
@@ -131,7 +117,6 @@
             position: relative;
             box-sizing: border-box;
         }
-
         .close-btn {
             position: absolute;
             top: 5px;
@@ -149,10 +134,7 @@
                 max-height: 400px;
                 overflow-y: auto;
             }
-
-            .tag,
-            .big-tag,
-            .bottom-tag {
+            .tag, .big-tag, .bottom-tag {
                 width: 90%;
                 max-width: 280px;
                 margin: 10px 0;
@@ -160,20 +142,16 @@
         }
 
         @media (max-width: 480px) {
-            .tag,
-            .big-tag,
-            .bottom-tag {
+            .tag, .big-tag, .bottom-tag {
                 width: 100%;
                 margin: 5px 0;
             }
-
             .remark-container {
                 font-size: 14px;
             }
         }
     </style>
 </head>
-
 <body>
     <div class="big-tag" onclick="window.open('https://testnet.monad.xyz', '_blank')">
         Monad测试网
@@ -182,8 +160,14 @@
     <div class="container" id="tag-container">
     </div>
 
-    <div id="copy-tip" style="display: none; position: fixed; top: 20px; right: 20px; background-color: #fff; padding: 10px; border: 1px solid #ccc; border-radius: 5px; box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);">
-        链接已复制到剪贴板！
+    <div class="bottom-tag" onclick="window.open('https://x.com/Darkerlllhiro', '_blank')">
+        hiro推特
+    </div>
+
+    <div class="remark-container">
+        <button class="close-btn" onclick="closeRemark()">×</button>
+        <strong>备注：</strong>
+        <p>这是关于Monad测试网的任务内容，或许不全面有补充的私我推特。介绍：第一，每次打开该任务网站，所有任务列表都会随机排列，产生随机性，避免相似交互被女巫。第二，每次点击对应内容交互后都会打勾记录，避免忘记某项任务（我自己记性不好经常忘）持续更新中。</p>
     </div>
 
     <script>
@@ -215,27 +199,15 @@
             }
         }
 
-        async function handleTagClick(tagElement, checkbox, counterElement, tagName) {
+        function handleTagClick(tagElement, checkbox, counterElement, tagName) {
             if (checkbox.classList.contains('checked')) {
                 return;
             }
             checkbox.classList.add('checked');
             const currentCount = parseInt(counterElement.textContent);
             counterElement.textContent = currentCount + 1;
-            try {
-                await navigator.clipboard.writeText(tagName.url);
-                const tip = document.getElementById('copy-tip');
-                tip.style.display = 'block';
-                setTimeout(() => {
-                    tip.style.display = 'none';
-                }, 3000);
-            } catch (err) {
-                console.error('复制链接失败: ', err);
-                alert('复制链接失败，请手动复制。');
-            }
+            window.open(tagName.url, '_blank');
         }
-
-
 
         function generateTags() {
             const container = document.getElementById('tag-container');
@@ -277,5 +249,4 @@
         window.onload = generateTags;
     </script>
 </body>
-
 </html>
