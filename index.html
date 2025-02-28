@@ -194,15 +194,13 @@
         }
 
         function handleTagClick(tagElement, checkbox, counterElement, tagName) {
-            if (checkbox.classList.contains('checked')) {
-                return;
-            }
+        if (!checkbox.classList.contains('checked')) {
             checkbox.classList.add('checked');
-            const currentCount = parseInt(counterElement.textContent);
-            counterElement.textContent = currentCount + 1;
-            window.open(tagName.url, '_blank');
         }
-
+            const currentCount = parseInt(counterElement.textContent);
+        counterElement.textContent = currentCount + 1;
+        window.open(tagName.url, '_blank');
+        }
         function generateTags() {
             const container = document.getElementById('tag-container');
             shuffleArray(tags);
