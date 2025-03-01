@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>小桃工作室</title>
     <style>
+
+
         body {
             background-color: #b3e0ff;
             display: flex;
@@ -32,7 +34,7 @@
             width: 180px;
             height: 50px;
             margin: 15px;
-            background-color: #ffcc66;
+            background-color: #c9ff66;
             text-align: left;
             padding-left: 15px;
             font-size: 16px;
@@ -50,7 +52,7 @@
             max-width: 350px;
             height: 60px;
             margin: 20px;
-            background-color: #ffcc66;
+            background-color: #cfc2a8;
             text-align: center;
             line-height: 60px;
             font-size: 20px;
@@ -126,6 +128,28 @@
             font-size: 18px;
             cursor: pointer;
         }
+        #fixed-tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 90%;
+            max-height: 600px;
+            overflow-y: auto;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+        }
+
+        #fixed-tags-container .tag {
+            background-color: #ffa7a7; /* 标签的背景颜色 */
+            border: 2px solid #ccc;
+            color: #333; /* 标签的文字颜色 */
+        }
+
+        #fixed-tags-container .tag:hover {
+            background-color: #616d5d; /* 鼠标悬停时改变背景颜色 */
+            color: white; /* 鼠标悬停时文字颜色变为白色 */
+        }
 
         @media (max-width: 768px) {
             .container {
@@ -157,6 +181,10 @@
         Monad测试网
     </div>
 
+    <!-- Fixed tag section -->
+    <div class="container" id="fixed-tags-container">
+    </div>
+
     <div class="container" id="tag-container">
     </div>
 
@@ -165,7 +193,17 @@
     
 
     <script>
-        const tags = [
+        const fixedTags = [
+        { name: "gas交互领水", url: "https://www.gas.zip/" },
+        { name: "dusted领水", url: "https://www.dusted.app" },
+        { name: "blockvision工会角色", url: "https://guild.xyz/blockvision" },
+        { name: "blockvision进群", url: "https://discord.com/invite/blockvision" },
+        { name: "blockvision验证", url: "https://discord.com/channels/932954288584527932/942783620043665440" },
+        { name: "blockvision领水", url: "https://discord.com/channels/932954288584527932/1342142136778489876" },
+        { name: "monad区块链浏览器", url: "https://testnet.monadexplorer.com/address/0x5A0eebF148927be10640bb60c80feF8DF9E210A7?tab=Activity" }
+         ];
+        
+         const tags = [
             { name: "ambient", url: "https://monad.ambient.finance/" },
             { name: "nad", url: "https://testnet.nad.fun/" },
             { name: "aPriori", url: "https://stake.apr.io/" },
@@ -183,8 +221,11 @@
             { name: "官网", url: "https://testnet.monad.xyz/" },
             { name: "rarebetsports", url: "https://rarelink.rarebetsports.io/" },
             { name: "monadverse", url: "https://monadverse.land/mint" },
-            { name: "curvance", url: "https://monad.curvance.com/monad" }
+            { name: "curvance", url: "https://monad.curvance.com/monad" },
+            { name: "kintsu", url: "https://kintsu.xyz/" },
+            { name: "Bean", url: "https://swap.bean.exchange/" }
         ];
+
 
         function shuffleArray(array) {
             for (let i = array.length - 1; i > 0; i--) {
@@ -232,10 +273,22 @@
                 container.appendChild(tagElement);
             });
         }
+        
+        function generateFixedTags() {
+            const fixedTagsContainer = document.getElementById('fixed-tags-container');
+            fixedTags.forEach(tag => {
+                const tagElement = document.createElement('div');
+                tagElement.classList.add('tag');
+                tagElement.textContent = tag.name;
+                tagElement.onclick = () => window.open(tag.url, '_blank');
+                fixedTagsContainer.appendChild(tagElement);
+            });
+        }
+
+        generateFixedTags();
+        generateTags();
 
 
-
-        window.onload = generateTags;
     </script>
 </body>
 </html>
