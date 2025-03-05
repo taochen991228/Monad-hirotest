@@ -146,10 +146,20 @@
             color: #333; /* 标签的文字颜色 */
         }
 
-        #fixed-tags-container .tag:hover {
-            background-color: #616d5d; /* 鼠标悬停时改变背景颜色 */
-            color: white; /* 鼠标悬停时文字颜色变为白色 */
+        #hight-tags-container .tag {
+            background-color: #9ecfd7; /* 标签的背景颜色 */
+            border: 2px solid #ccc;
+            color: #333; /* 标签的文字颜色 */
         }
+
+
+        #me-tags-container .tag {
+            background-color: #946ec7; /* 标签的背景颜色 */
+            border: 2px solid #ccc;
+            color: #333; /* 标签的文字颜色 */
+        }
+
+
 
         @media (max-width: 768px) {
             .container {
@@ -179,9 +189,15 @@
 <body>
     <div class="big-tag" onclick="window.open('https://testnet.monad.xyz', '_blank')">
         Monad测试网
-    </div>
+</div>
 
-    <!-- Fixed tag section -->
+    <div class="container" id="me-tags-container"></div>
+
+
+
+    <div class="container" id="hight-tags-container">
+    </div>
+    
     <div class="container" id="fixed-tags-container">
     </div>
 
@@ -193,6 +209,31 @@
     
 
     <script>
+        const meTags = [
+            {"name": "Juice-1Mon", "url": "https://magiceden.io/mint-terminal/monad-testnet/0x040ced701fd370b85f09cf6715adfe856d764ac9"},
+            {"name": "Herb-Free", "url": "https://magiceden.io/mint-terminal/monad-testnet/0x002c8fd766605b609d31cc9764e27289daf033e9"},
+            {"name": "Elixir-Free", "url": "https://magiceden.io/mint-terminal/monad-testnet/0x0fa3da91d4469dfd8c7a0cb13c47d90c8e88d5bd"},
+            {"name": "Early Tester-Free", "url": "https://magiceden.io/mint-terminal/monad-testnet/0xb2ea0ff3ad4134367fb7dc75d48b3493e5a09c81"},
+            {"name": "紫色弗伦斯-Free", "url": "https://magiceden.io/mint-terminal/monad-testnet/0xfd3b54bd826cea09d15e87f95a869ecf3e462f92"}
+        ];
+
+
+
+        const hightTags =  [
+        {"name": "LFJ", "url": "https://pandaria.lfj.gg/"},
+        {"name": "Nad.fun", "url": "https://testnet.nad.fun/rewards"},
+        {"name": "Dusted", "url": "https://www.dusted.app/"},
+        {"name": "Kuru", "url": "https://www.kuru.io/markets"},
+        {"name": "RareBetSports", "url": "https://rarelink.rarebetsports.io/"},
+        {"name": "Magic Eden", "url": "https://magiceden.io/monad-testnet?gr"},
+        {"name": "Curvance", "url": "https://monad.curvance.com/monad"},
+        {"name": "fantasy ", "url": "https://monad.fantasy.top/login"}
+        ];
+
+
+
+
+
         const fixedTags = [
         { name: "gas交互领水", url: "https://www.gas.zip/" },
         { name: "dusted领水", url: "https://www.dusted.app" },
@@ -242,6 +283,9 @@
         counterElement.textContent = currentCount + 1;
         window.open(tagName.url, '_blank');
         }
+
+
+
         function generateTags() {
             const container = document.getElementById('tag-container');
             shuffleArray(tags);
@@ -285,6 +329,37 @@
             });
         }
 
+
+        function generateHightTags() {
+            const fixedTagsContainer = document.getElementById('hight-tags-container');
+            hightTags.forEach(tag => {
+                const tagElement = document.createElement('div');
+                tagElement.classList.add('tag');
+                tagElement.textContent = tag.name;
+                tagElement.onclick = () => window.open(tag.url, '_blank');
+                fixedTagsContainer.appendChild(tagElement);
+            });
+        }
+
+
+        
+
+
+        function generateMETags() {
+            const fixedTagsContainer = document.getElementById('me-tags-container');
+            shuffleArray(meTags);
+
+            meTags.forEach(tag => {
+                const tagElement = document.createElement('div');
+                tagElement.classList.add('tag');
+                tagElement.textContent = tag.name;
+                tagElement.onclick = () => window.open(tag.url, '_blank');
+                fixedTagsContainer.appendChild(tagElement);
+            });
+        }
+
+        generateMETags();
+        generateHightTags();
         generateFixedTags();
         generateTags();
 
