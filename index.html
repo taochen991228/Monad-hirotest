@@ -292,7 +292,28 @@
             { name: "Elixir x Monad", url: "https://magiceden.io/collections/monad-testnet/0x0fa3da91d4469dfd8c7a0cb13c47d90c8e88d5bd" },
             { name: "Herb Genesis", url: "https://magiceden.io/collections/monad-testnet/0x002c8fd766605b609d31cc9764e27289daf033e9" },
             { name: "Testnet Juice", url: "https://magiceden.io/collections/monad-testnet/0x040ced701fd370b85f09cf6715adfe856d764ac9" },
-            { name: "Nad Name Service", url: "https://app.nad.domains/" }
+            { name: "Nad Name Service", url: "https://app.nad.domains/" },
+            { name: "Proof of Sparkballs", url: "https://magiceden.io/mint-terminal/monad-testnet/0xa951bb8126d81d6aeaf73cc335fc7b7444df9520" },
+            { name: "Spike It Up", url: "https://magiceden.io/collections/monad-testnet/0x9e4339d4d36bac6747e4e42e85e39cd1e2c58a1f" },
+            { name: "NFTs2Me Owners", url: "https://magiceden.io/collections/monad-testnet/0x00000000001594c61dd8a6804da9ab58ed2483ce" },
+            { name: "LFP", url: "https://magiceden.io/collections/monad-testnet/0x536a63c11cc5c243712536cf352d9553d8b0964c" },
+            // { name: "  ", url: "   " },
+            // { name: "  ", url: "   " },
+            // { name: "  ", url: "   " },
+            // { name: "  ", url: "   " },
+            // { name: "  ", url: "   " },
+            // { name: "  ", url: "   " },
+            // { name: "  ", url: "   " },
+            // { name: "  ", url: "   " },
+            // { name: "  ", url: "   " },
+            // { name: "  ", url: "   " },
+            // { name: "  ", url: "   " },
+            // { name: "  ", url: "   " },
+            // { name: "  ", url: "   " },
+            // { name: "  ", url: "   " },
+        
+        
+        
         ];
 
 
@@ -335,13 +356,13 @@
             { name: "shMONAD", url: "https://www.shmonad.xyz/" },
             { name: "Demask", url: "https://app.demask.finance/explorer" },
             { name: "hedgemony (邀请码)", url: "https://app.hedgemony.xyz/" },
-            { name: "     ", url: "   " },
-            { name: "     ", url: "   " },
-            { name: "     ", url: "   " },
-            { name: "     ", url: "   " },
-            { name: "     ", url: "   " },
-            { name: "     ", url: "   " },
-            { name: "     ", url: "   " },
+            // { name: "     ", url: "   " },
+            // { name: "     ", url: "   " },
+            // { name: "     ", url: "   " },
+            // { name: "     ", url: "   " },
+            // { name: "     ", url: "   " },
+            // { name: "     ", url: "   " },
+            // { name: "     ", url: "   " },
 
 
             
@@ -403,6 +424,9 @@
         
         function generateFixedTags() {
             const fixedTagsContainer = document.getElementById('fixed-tags-container');
+            shuffleArray(fixedTags);
+
+
             fixedTags.forEach(tag => {
                 const tagElement = document.createElement('div');
                 tagElement.classList.add('tag');
