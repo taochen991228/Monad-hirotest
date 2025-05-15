@@ -1,501 +1,199 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>小桃工作室</title>
-    <style>
-
-
-        body {
-            background-color: #b3e0ff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            height: 100vh;
-            margin: 0;
-            text-align: center;
-            padding: 10px;
-        }
-        .container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            width: 90%;
-            max-height: 600px;
-            overflow-y: auto;
-            border: 2px solid #ccc;
-            padding: 30px;
-            margin-bottom: 20px;
-            box-sizing: border-box;
-        }
-        .tag {
-            width: 180px;
-            height: 50px;
-            margin: 15px;
-            background-color: #c9ff66;
-            text-align: left;
-            padding-left: 15px;
-            font-size: 16px;
-            border: 2px solid #ccc;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            display: flex;
-            align-items: center;
-        }
-        .tag:hover {
-            background-color: #ff9933;
-        }
-        .big-tag {
-            width: 100%;
-            max-width: 350px;
-            height: 60px;
-            margin: 20px;
-            background-color: #cfc2a8;
-            text-align: center;
-            line-height: 60px;
-            font-size: 20px;
-            border: 2px solid #ccc;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        .big-tag:hover {
-            background-color: #ff9933;
-        }
-        .bottom-tag {
-            width: 100%;
-            max-width: 250px;
-            height: 40px;
-            background-color: #ffcc66;
-            text-align: center;
-            line-height: 40px;
-            font-size: 16px;
-            border: 2px solid #ccc;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            margin-top: 20px;
-        }
-        .bottom-tag:hover {
-            background-color: #ff9933;
-        }
-        .checkbox {
-            width: 20px;
-            height: 20px;
-            border: 2px solid #ccc;
-            margin-left: 10px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        .checkbox.checked {
-            background-color: green;
-        }
-        .checkbox.checked::after {
-            content: "✔";
-            color: white;
-            font-size: 16px;
-        }
-        .counter {
-            font-size: 14px;
-            margin-left: 5px;
-        }
-        .number {
-            width: 30px;
-            font-weight: bold;
-        }
-        .remark-container {
-            width: 100%;
-            max-width: 700px;
-            padding: 20px;
-            margin-top: 20px;
-            background-color: #f0f8ff;
-            border: 2px solid #ccc;
-            border-radius: 10px;
-            text-align: left;
-            font-size: 16px;
-            position: relative;
-            box-sizing: border-box;
-        }
-        .close-btn {
-            position: absolute;
-            top: 5px;
-            right: 5px;
-            background-color: transparent;
-            border: none;
-            font-size: 18px;
-            cursor: pointer;
-        }
-        #fixed-tags-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            width: 90%;
-            max-height: 600px;
-            overflow-y: auto;
-            padding: 30px;
-            margin-bottom: 20px;
-            box-sizing: border-box;
-        }
-
-        #fixed-tags-container .tag {
-            background-color: #ffa7a7; /* 标签的背景颜色 */
-            border: 2px solid #ccc;
-            color: #333; /* 标签的文字颜色 */
-        }
-
-        #hight-tags-container .tag {
-            background-color: #ce8ed5; /* 标签的背景颜色 */
-            border: 2px solid #ccc;
-            color: #333; /* 标签的文字颜色 */
-        }
-
-
-        #me-tags-container .tag {
-            background-color: #946ec7; /* 标签的背景颜色 */
-            border: 2px solid #ccc;
-            color: #333; /* 标签的文字颜色 */
-        }
-
-
-
-        @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
-                align-items: center;
-                max-height: 400px;
-                overflow-y: auto;
-            }
-            .tag, .big-tag, .bottom-tag {
-                width: 90%;
-                max-width: 280px;
-                margin: 10px 0;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .tag, .big-tag, .bottom-tag {
-                width: 100%;
-                margin: 5px 0;
-            }
-            .remark-container {
-                font-size: 14px;
-            }
-        }
-    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>小桃工作室 - Monad生态导航</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div style="display: flex; justify-content: flex-start; gap: 10px; width: 100%; max-width: 700px;">
-        <div class="big-tag" onclick="window.open('https://testnet.monad.xyz', '_blank')">
-            Monad
-        </div>
-        <div class="big-tag" onclick="window.open('https://testnet.monad.xyz/nfts', '_blank')">
-        NFT
-        </div>
-        <div class="big-tag" onclick="window.open('https://testnet.monad.xyz/break-monad', '_blank')">
-            游戏
-        </div>
 
-        <div class="big-tag" onclick="window.open('https://testnet.monadexplorer.com', '_blank')">
-            浏览器
-        </div>
-        
-        <div class="big-tag" onclick="window.open('https://monad-zw.notion.site/Monad-187f1addfcca80178da4d64c022c6d07?p=1a6f1addfcca802299ffff39f9b43bcc&pm=s', '_blank')">
-            notion
-        </div>
-
-        <div class="big-tag" onclick="window.open('https://x.com/zaijin338191/status/1900895517296783531', '_blank')">
-             在金
-        </div>
-
-
-
-
-    </div>
-
-
-    <div class="container" id="me-tags-container"></div>
-
-
-
-    <div class="container" id="hight-tags-container">
-    </div>
+    <!-- 顶部 big tag -->
+    <div id="top-tags" class="container">
+        <div class="big-tag" data-url="https://testnet.monad.xyz">官方网站</div>
     
-    <div class="container" id="fixed-tags-container">
     </div>
 
-    <div class="container" id="tag-container">
-    </div>
-
-
-
-    
+    <!-- 所有其他分组容器 -->
+    <div class="container" id="group-tags-container"></div>
 
     <script>
-        // const meTags = [
-        //     {"name": "Juice-1Mon", "url": "https://magiceden.io/mint-terminal/monad-testnet/0x040ced701fd370b85f09cf6715adfe856d764ac9"},
-        //     {"name": "Herb-Free", "url": "https://magiceden.io/mint-terminal/monad-testnet/0x002c8fd766605b609d31cc9764e27289daf033e9"},
-        //     {"name": "Elixir-Free", "url": "https://magiceden.io/mint-terminal/monad-testnet/0x0fa3da91d4469dfd8c7a0cb13c47d90c8e88d5bd"},
-        //     {"name": "Early Tester-Free", "url": "https://magiceden.io/mint-terminal/monad-testnet/0xb2ea0ff3ad4134367fb7dc75d48b3493e5a09c81"},
-        //     {"name": "紫色弗伦斯-Free", "url": "https://magiceden.io/mint-terminal/monad-testnet/0xfd3b54bd826cea09d15e87f95a869ecf3e462f92"}
-        // ];
-    //     const meTags = [
-    // {"name": "Monagayanimals", "url": "https://monagaynanimals.xyz/"},
-    // {"name": "FrontRunner", "url": "https://www.shmonad.xyz/frontrunner"},
-    // {"name": "monadtiles", "url": "https://monadtiles.xyz/"},
-    // {"name": "Monusic", "url": "https://monusic.wenads.app/"},
-    // {"name": "curvance", "url": "https://monad.curvance.com/monad"},
-    // {"name": "Velocity Rush", "url": "https://velocityrush.me/"},
-    // {"name": "truemp","url":"https://flappy-trump-beta.vercel.app/"},
-    // {"name": "浏览器", "url": "https://testnet.monadexplorer.com"},
-    // {"name": "Arcane Horizo 爬树", "url": "https://minigame.arcanemmo.xyz/"}
-    // ];
+    (() => {
+        const tagGroups = [
+            {
+                title: "精品项目",
+                tags: [
+                {"name": "Dusted", "url": "https://www.dusted.app/"},
+                {"name": "LFJ", "url": "https://pandaria.lfj.gg/"},
+                {"name": "Nad.fun", "url": "https://testnet.nad.fun/rewards"},
+                {"name": "Curvance", "url": "https://monad.curvance.com/monad"},
+                {"name": "Magic Eden", "url": "https://magiceden.io/monad-testnet?gr"},
+                {"name": "Kuru", "url": "https://www.kuru.io/markets"},
+                {"name": "RareBetSports", "url": "https://rarelink.rarebetsports.io/"},
+
+                {"name": "Zona", "url": "https://app.zona.finance/trade"},
+                {"name": "odyssey", "url": "https://odyssey.gateway.tech/dashboard"},
+                {"name": "Bean Exchange", "url": "https://swap.bean.exchange/" },
+                {"name": "LEVR", "url": "https://app.levr.bet/"},
+                {"name": "Showdown", "url": "https://showdown.win/"},
+                {"name": "Olab", "url": "https://app.olab.xyz/"},
+                {"name": "Nostra ", "url": "https://monad.nostra.finance/lend-borrow"},
+                {"name": "Kizzy", "url": "https://testnet.kizzy.io/login"},
 
 
+                ]
+            },
+            {
+                title: "生态项目-1",
+                tags: [
 
-    const meTags = [
-    // {"name": "bebop", "url": "https://bebop.xyz/trade?network=monad"},
-    // {"name": "levr", "url": "https://app.levr.bet/"},
-    // {"name": "levr-zealy", "url": "https://zealy.io/cw/levrbet"},
-    // {"name": "levrbet-discord", "url": "https://discord.com/invite/levrbet"},
-    {"name": "Bob 0.25免费的NFT", "url": "https://magiceden.io/mint-terminal/monad-testnet/0xfa3dfe6077c6ad4c0170902d4a7b3857901ac9fe"},
-    {"name": "OctoSwap TN 15 mon", "url": "https://magiceden.io/mint-terminal/monad-testnet/0x54a561ad4808DbABBB3b61347F5E90006Fc05547"},
-    {"name": "    ", "url": "   "},
-    {"name": "    ", "url": "   "},
-    {"name": "    ", "url": "   "},
-    // {"name": "    ", "url": "   "},
-    // {"name": "    ", "url": "   "},
-    // {"name": "    ", "url": "   "},
-    // {"name": "    ", "url": "   "},
-    ];
+                { name: "M0narch", url: "https://www.m0narch.xyz/" },
+                { name: "Ambient", url: "https://monad.ambient.finance/" },
+                { name: "Apriori", url: "https://stake.apr.io/" },
+                { name: "Talentum", url: "https://monad.talentum.id/" },
+                { name: "Domains", url: "https://app.nad.domains/" },
+                { name: "lil-chong-NFT", url: "https://testnet.lilchogstars.com/" },
+                { name: "AiCraft", url: "https://aicraft.fun/projects/fizen" },
+                { name: "Nostra", url: "https://monad.nostra.finance/" },
+                { name: "Accountable", url: "https://game.accountable.capital/?step=play" },
+                { name: "Pancakeswap", url: "https://pancakeswap.finance/?chain=monadTestnet" },
+                { name: "Chaquen", url: "https://monad.chaquen.io/" },
+                { name: "Castora (预测市场)", url: "https://castora.xyz/pools" },
+                { name: "Izumi", url: "https://alpha.izumi.finance/trade/swap" },
+                { name: "Dirol-(SWAP)-有问题", url: "https://dex.dirol.network/swap" },
+                { name: "Kinza", url: "https://monad-test.kinza.finance/#/details/DAK" },
+                { name: "Magma", url: "https://www.magmastaking.xyz/" },
+                
+                ]
+            },
+            {
+                title: "生态项目-2",
+                tags: [
+                { name: "Kintsu(Stake)", url: "https://kintsu.xyz/staking" },
+                { name: "XL-(MEME COINS)", url: "https://alpha-testnet.xlmeme.com/monad" },
+                { name: "Crystal", url: "https://app.crystal.exchange/swap?tokenIn=0xf817257fed379853cDe0fa4F97AB987181B1E5Ea&tokenOut=0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE&amountIn=0" },
+                { name: "OctoSwap (DEX)", url: "https://octo.exchange/swap" },
+                { name: "Azaar (SWAP)", url: "https://app-monad-testnet.azaar.com/en/swap" },
+                { name: "monorail", url: "https://testnet-preview.monorail.xyz/" },
+                { name: "Mu Digital", url: "https://testnet.mudigital.net/" },
+                { name: "Monadex", url: "https://app.monadex.exchange/" },
+                { name: "Mace", url: "https://testnet.swaps.mace.ag/" },
+                { name: "Redbrick", url: "https://redbrick.land/web3-portal?tab=monad_testnet" },
 
-
-
-        const hightTags =  [
-        {"name": "olab", "url": "https://app.olab.xyz/"},
-        {"name": "showdown", "url": "https://showdown.win/"},
-        {"name": "zona", "url": "https://app.zona.finance/trade"},
-        {"name": "LEVR", "url": "https://app.levr.bet/"},
-        {"name": "Kizzy", "url": "https://testnet.kizzy.io/login"},
-        {"name": "odyssey", "url": "https://odyssey.gateway.tech/dashboard"},
-        { "name": "Bean Exchange", "url": "https://swap.bean.exchange/" },
-        {"name": "LFJ", "url": "https://pandaria.lfj.gg/"},
-        {"name": "Nad.fun", "url": "https://testnet.nad.fun/rewards"},
-        {"name": "Dusted", "url": "https://www.dusted.app/"},
-        {"name": "Kuru", "url": "https://www.kuru.io/markets"},
-        {"name": "RareBetSports", "url": "https://rarelink.rarebetsports.io/"},
-        {"name": "Magic Eden", "url": "https://magiceden.io/monad-testnet?gr"},
-        {"name": "Curvance", "url": "https://monad.curvance.com/monad"},
-        {"name": "Fantasy ", "url": "https://monad.fantasy.top/login"}
-        ];
-
-
-
-
-
-        // const fixedTags = [
-        // { name: "gas交互领水", url: "https://www.gas.zip/" },
-        // { name: "blockvision工会角色", url: "https://guild.xyz/blockvision" },
-        // { name: "blockvision进群", url: "https://discord.com/invite/blockvision" },
-        // { name: "blockvision验证", url: "https://discord.com/channels/932954288584527932/942783620043665440" },
-        // { name: "blockvision领水", url: "https://discord.com/channels/932954288584527932/1342142136778489876" }
-        //  ];
-
-
-        const fixedTags = [
-            { name: "Monadverse-1", url: "https://magiceden.io/collections/monad-testnet/0xe25c57fF3EeA05d0F8bE9aaAE3F522DdC803cA4E" },
-            { name: "Monadverse-2", url: "https://magiceden.io/collections/monad-testnet/0x3A9acc3Be6E9678FA5D23810488c37a3192aaf75" },
-            { name: "Monadverse-3", url: "https://magiceden.io/collections/monad-testnet/0xCaB08943346761701EC9757befe79eA88dD67670" },
-            { name: "Monadverse-4", url: "https://magiceden.io/collections/monad-testnet/0xba838E4Cca4b852e1AebD32f248967aD98C3AA45" },
-            { name: "Monadverse-5", url: "https://magiceden.io/collections/monad-testnet/0x5d2a7412872F9dC5371D0Cb54274fDB241171b95" },
-            { name: "Emmy on Monad!", url: "https://magiceden.io/collections/monad-testnet/0x2a0d96bc211ec8cdc61c92ba6204bf2df228caba" },
-            { name: "Monad x Alchemy", url: "https://magiceden.io/collections/monad-testnet/0x436ee7219bb099f71c9db9c7de8862a9bde891ae" },
-            { name: "overnads", url: "https://magiceden.io/collections/monad-testnet/0x66b655de495268eb4c7b70bf4ac1ab4094589f93" },
-            { name: "CHOGSTAR", url: "https://testnet.lilchogstars.com/" },
-            { name: "Elixir x Monad", url: "https://magiceden.io/collections/monad-testnet/0x0fa3da91d4469dfd8c7a0cb13c47d90c8e88d5bd" },
-            { name: "Herb Genesis", url: "https://magiceden.io/collections/monad-testnet/0x002c8fd766605b609d31cc9764e27289daf033e9" },
-            { name: "Testnet Juice", url: "https://magiceden.io/collections/monad-testnet/0x040ced701fd370b85f09cf6715adfe856d764ac9" },
-            { name: "Nad Name Service", url: "https://app.nad.domains/" },
-            { name: "Proof of Sparkballs", url: "https://magiceden.io/mint-terminal/monad-testnet/0xa951bb8126d81d6aeaf73cc335fc7b7444df9520" },
-            { name: "Spike It Up", url: "https://magiceden.io/collections/monad-testnet/0x9e4339d4d36bac6747e4e42e85e39cd1e2c58a1f" },
-            { name: "NFTs2Me Owners", url: "https://magiceden.io/collections/monad-testnet/0x00000000001594c61dd8a6804da9ab58ed2483ce" },
-            { name: "LFP", url: "https://magiceden.io/collections/monad-testnet/0x536a63c11cc5c243712536cf352d9553d8b0964c" },
-            // { name: "  ", url: "   " },
-            // { name: "  ", url: "   " },
-            // { name: "  ", url: "   " },
-            // { name: "  ", url: "   " },
-            // { name: "  ", url: "   " },
-            // { name: "  ", url: "   " },
-            // { name: "  ", url: "   " },
-            // { name: "  ", url: "   " },
-            // { name: "  ", url: "   " },
-            // { name: "  ", url: "   " },
-            // { name: "  ", url: "   " },
-            // { name: "  ", url: "   " },
-            // { name: "  ", url: "   " },
-            // { name: "  ", url: "   " },
-        
-        
-        
-        ];
-
-
-        
-        
-         const tags = [
-
-         
-            { name: "M0narch", url: "https://www.m0narch.xyz/" },
-            { name: "Ambient", url: "https://monad.ambient.finance/" },
-            { name: "Apriori", url: "https://stake.apr.io/" },
-            { name: "Talentum", url: "https://monad.talentum.id/" },
-            { name: "Domains", url: "https://app.nad.domains/" },
-            { name: "lil-chong-NFT", url: "https://testnet.lilchogstars.com/" },
-            { name: "AiCraft", url: "https://aicraft.fun/projects/fizen" },
-            { name: "Nostra", url: "https://monad.nostra.finance/" },
-            { name: "Accountable", url: "https://game.accountable.capital/?step=play" },
+                { name: "hashflow", url: "https://app.hashflow.com/?b=1-ETH&q=1-WETH" },
+                { name: "shMONAD", url: "https://www.shmonad.xyz/" },
+                { name: "Demask", url: "https://app.demask.finance/explorer" },
+                { name: "hedgemony (邀请码)", url: "https://app.hedgemony.xyz/" },
+                { name: "kizzy (手机端)", url: "https://kizzy.io/home" },
+                { name: "PLAY Network (手机端) ", url: "https://t.me/PLAY_GameStore_Bot?startapp" }
+                ]
+            },
             
-            { name: "Pancakeswap", url: "https://pancakeswap.finance/?chain=monadTestnet" },
-            { name: "Chaquen", url: "https://monad.chaquen.io/" },
-            { name: "Castora (预测市场)", url: "https://castora.xyz/pools" },
-            { name: "Izumi", url: "https://alpha.izumi.finance/trade/swap" },
-            { name: "Dirol-(SWAP)-有问题", url: "https://dex.dirol.network/swap" },
-            { name: "Kinza", url: "https://monad-test.kinza.finance/#/details/DAK" },
-            { name: "Magma", url: "https://www.magmastaking.xyz/" },
-            { name: "Kintsu(Stake)", url: "https://kintsu.xyz/staking" },
-            { name: "XL-(MEME COINS)", url: "https://alpha-testnet.xlmeme.com/monad" },
-            { name: "Crystal", url: "https://app.crystal.exchange/swap?tokenIn=0xf817257fed379853cDe0fa4F97AB987181B1E5Ea&tokenOut=0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE&amountIn=0" },
-            { name: "OctoSwap (DEX)", url: "https://octo.exchange/swap" },
-            { name: "Azaar (SWAP)", url: "https://app-monad-testnet.azaar.com/en/swap" },
-            // { name: "Zaros (衍生品)", url: "https://testnet.app.zaros.fi/" }, 
-            { name: "monorail", url: "https://testnet-preview.monorail.xyz/" },
-            { name: "Mu Digital", url: "https://testnet.mudigital.net/" },
-            { name: "Monadex", url: "https://app.monadex.exchange/" },
-            { name: "Mace", url: "https://testnet.swaps.mace.ag/" },
-            { name: "Redbrick", url: "https://redbrick.land/web3-portal?tab=monad_testnet" },
-            { name: "kizzy (手机端)", url: "https://kizzy.io/home" },
-            { name: "PLAY Network (手机端) ", url: "https://t.me/PLAY_GameStore_Bot?startapp" },
-            { name: "hashflow", url: "https://app.hashflow.com/?b=1-ETH&q=1-WETH" },
-            { name: "shMONAD", url: "https://www.shmonad.xyz/" },
-            { name: "Demask", url: "https://app.demask.finance/explorer" },
-            { name: "hedgemony (邀请码)", url: "https://app.hedgemony.xyz/" },
-            // { name: "     ", url: "   " },
-            // { name: "     ", url: "   " },
-            // { name: "     ", url: "   " },
-            // { name: "     ", url: "   " },
-            // { name: "     ", url: "   " },
-            // { name: "     ", url: "   " },
-            // { name: "     ", url: "   " },
-
-
             
+            {
+                title: "NFT-购买",
+                tags: [
+                { name: "Monadverse-1", url: "https://magiceden.io/collections/monad-testnet/0xe25c57fF3EeA05d0F8bE9aaAE3F522DdC803cA4E" },
+                { name: "Monadverse-2", url: "https://magiceden.io/collections/monad-testnet/0x3A9acc3Be6E9678FA5D23810488c37a3192aaf75" },
+                { name: "Monadverse-3", url: "https://magiceden.io/collections/monad-testnet/0xCaB08943346761701EC9757befe79eA88dD67670" },
+                { name: "Monadverse-4", url: "https://magiceden.io/collections/monad-testnet/0xba838E4Cca4b852e1AebD32f248967aD98C3AA45" },
+                { name: "Monadverse-5", url: "https://magiceden.io/collections/monad-testnet/0x5d2a7412872F9dC5371D0Cb54274fDB241171b95" },
+                { name: "Emmy on Monad!", url: "https://magiceden.io/collections/monad-testnet/0x2a0d96bc211ec8cdc61c92ba6204bf2df228caba" },
+                { name: "Monad x Alchemy", url: "https://magiceden.io/collections/monad-testnet/0x436ee7219bb099f71c9db9c7de8862a9bde891ae" },
+                { name: "overnads", url: "https://magiceden.io/collections/monad-testnet/0x66b655de495268eb4c7b70bf4ac1ab4094589f93" },
+                { name: "CHOGSTAR", url: "https://testnet.lilchogstars.com/" },
+                { name: "Elixir x Monad", url: "https://magiceden.io/collections/monad-testnet/0x0fa3da91d4469dfd8c7a0cb13c47d90c8e88d5bd" },
+                { name: "Herb Genesis", url: "https://magiceden.io/collections/monad-testnet/0x002c8fd766605b609d31cc9764e27289daf033e9" },
+                { name: "Testnet Juice", url: "https://magiceden.io/collections/monad-testnet/0x040ced701fd370b85f09cf6715adfe856d764ac9" },
+                { name: "Nad Name Service", url: "https://app.nad.domains/" },
+                { name: "Proof of Sparkballs", url: "https://magiceden.io/mint-terminal/monad-testnet/0xa951bb8126d81d6aeaf73cc335fc7b7444df9520" },
+                { name: "Spike It Up", url: "https://magiceden.io/collections/monad-testnet/0x9e4339d4d36bac6747e4e42e85e39cd1e2c58a1f" },
+                { name: "NFTs2Me Owners", url: "https://magiceden.io/collections/monad-testnet/0x00000000001594c61dd8a6804da9ab58ed2483ce" },
+                { name: "LFP", url: "https://magiceden.io/collections/monad-testnet/0x536a63c11cc5c243712536cf352d9553d8b0964c" },
+                ]
+            },
         ];
-
-
-
-
-
-        function shuffleArray(array) {
-            for (let i = array.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]];
-            }
-        }
-
-        function handleTagClick(tagElement, checkbox, counterElement, tagName) {
-        if (!checkbox.classList.contains('checked')) {
-            checkbox.classList.add('checked');
-        }
-            const currentCount = parseInt(counterElement.textContent);
-        counterElement.textContent = currentCount + 1;
-        window.open(tagName.url, '_blank');
-        }
-
-
-
-        function generateTags() {
-            const container = document.getElementById('tag-container');
-            // shuffleArray(tags);
-
-            tags.forEach((tag, index) => {
-                const tagElement = document.createElement('div');
-                tagElement.classList.add('tag');
-
-                // const tagNumber = document.createElement('span');
-                // tagNumber.classList.add('number');
-                // tagNumber.textContent = index + 1;
-                // tagElement.appendChild(tagNumber);
-
-                const tagName = document.createElement('span');
-                tagName.textContent = tag.name;
-                tagElement.appendChild(tagName);
-
-                const checkbox = document.createElement('div');
-                checkbox.classList.add('checkbox');
-                tagElement.appendChild(checkbox);
-
-                const counterElement = document.createElement('span');
-                // counterElement.classList.add('counter');
-                // counterElement.textContent = "0";
-                // tagElement.appendChild(counterElement);
-
-                tagElement.onclick = () => handleTagClick(tagElement, checkbox, counterElement, tag);
-
-                container.appendChild(tagElement);
-            });
-        }
         
-        function generateFixedTags() {
-            const fixedTagsContainer = document.getElementById('fixed-tags-container');
-            shuffleArray(fixedTags);
 
 
-            fixedTags.forEach(tag => {
-                const tagElement = document.createElement('div');
-                tagElement.classList.add('tag');
-                tagElement.textContent = tag.name;
-                tagElement.onclick = () => window.open(tag.url, '_blank');
-                fixedTagsContainer.appendChild(tagElement);
+        // 生成一个随机标签组，title 是随机tag的name，tags里只有这个tag
+        function getRandomTagGroup(tagGroups) {
+            const allTags = tagGroups.flatMap(group => group.tags);
+            if (allTags.length === 0) return { title: '', tags: [] };
+
+            const randomTag = allTags[Math.floor(Math.random() * allTags.length)];
+            return {
+                title: randomTag.name,
+                tags: [randomTag]
+            };
+        }
+
+   
+
+        function createTagElement(tag) {
+            const el = document.createElement('div');
+            el.className = 'tag';
+            el.textContent = tag.name;
+            el.dataset.url = tag.url;
+            el.addEventListener('click', () => {
+                window.open(tag.url, '_blank');
+            });
+            return el;
+        }
+
+        // 通用渲染函数，接收标签组数组参数
+        function renderGroups(groups) {
+            const container = document.getElementById('group-tags-container');
+            container.innerHTML = '';
+
+            groups.forEach(group => {
+                const card = document.createElement('div');
+                card.className = 'group-card';
+
+                const title = document.createElement('div');
+                title.className = 'category-title';
+                title.textContent = group.title || '';  // 防止空title报错
+                card.appendChild(title);
+
+                const tagGroup = document.createElement('div');
+                tagGroup.className = 'tag-group';
+
+                group.tags.forEach(tag => {
+                    tagGroup.appendChild(createTagElement(tag));
+                });
+
+                card.appendChild(tagGroup);
+                container.appendChild(card);
             });
         }
 
 
-        function generateHightTags() {
-            const fixedTagsContainer = document.getElementById('hight-tags-container');
-            hightTags.forEach(tag => {
-                const tagElement = document.createElement('div');
-                tagElement.classList.add('tag');
-                tagElement.textContent = tag.name;
-                tagElement.onclick = () => window.open(tag.url, '_blank');
-                fixedTagsContainer.appendChild(tagElement);
+        function bindBigTagClicks() {
+            document.querySelectorAll('.big-tag').forEach(el => {
+                el.addEventListener('click', () => {
+                    const url = el.dataset.url;
+                    if (url) {
+                        window.open(url, '_blank');
+                    }
+                });
             });
         }
+
+
+        window.addEventListener('DOMContentLoaded', () => {
+            bindBigTagClicks();
+
+            // 页面初始渲染默认标签组
+            renderGroups(tagGroups);
+        });
+
 
 
         
 
 
-        function generateMETags() {
-            const fixedTagsContainer = document.getElementById('me-tags-container');
-            // shuffleArray(meTags);
 
-            meTags.forEach(tag => {
-                const tagElement = document.createElement('div');
-                tagElement.classList.add('tag');
-                tagElement.textContent = tag.name;
-                tagElement.onclick = () => window.open(tag.url, '_blank');
-                fixedTagsContainer.appendChild(tagElement);
-            });
-        }
-
-        generateMETags();
-        generateHightTags();
-        generateFixedTags();
-        generateTags();
-
-
+    })();
     </script>
 </body>
 </html>
